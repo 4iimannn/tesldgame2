@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TESL D: The Last Period</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <div id="titleScreen" class="screen active">
+    <div class="title-card">
+      <div class="eyebrow">IPGKBA · TESL D · YEAR 2</div>
+      <h1>TESL D:<br><span>THE LAST PERIOD</span></h1>
+      <p>A social puzzle adventure about one class, one chaotic school day, and the things nobody told you.</p>
+      <div class="title-actions">
+        <button class="primary" id="newGameBtn">NEW DAY</button>
+        <button class="secondary" id="continueBtn">CONTINUE</button>
+        <button class="ghost" id="howBtn">HOW TO PLAY</button>
+      </div>
+      <div class="title-photo"><img src="assets/class-photo.png" alt="TESL D class photo"></div>
+    </div>
+  </div>
+
+  <div id="selectScreen" class="screen">
+    <header class="screen-header">
+      <div><div class="eyebrow">CHARACTER SELECT</div><h2>Choose your TESL D student</h2><p>Each route reveals different dialogue, shortcuts and quest solutions.</p></div>
+      <button class="secondary" id="backTitleBtn">BACK</button>
+    </header>
+    <div id="characterGrid" class="character-grid"></div>
+  </div>
+
+  <div id="gameScreen" class="screen">
+    <header class="game-header">
+      <div class="hud-left">
+        <div class="hud-name" id="hudName">Aiman</div>
+        <div class="hud-pill">DAY <span id="hudDay">1</span></div>
+        <div class="hud-pill" id="hudTime">08:00</div>
+        <div class="hud-pill" id="hudLocation">TESL D CLASS</div>
+      </div>
+      <div class="hud-right">
+        <div class="meter"><span>❤</span><i><b id="hpBar"></b></i></div>
+        <div class="meter"><span>⚡</span><i><b id="energyBar"></b></i></div>
+        <button class="icon-btn" id="menuBtn">☰</button>
+      </div>
+    </header>
+
+    <main class="game-layout">
+      <section class="world-panel">
+        <canvas id="world" width="960" height="600"></canvas>
+        <div class="controls">WASD / Arrow Keys: move · E / Enter: talk/interact · M: map · Q: quests · I: inventory</div>
+      </section>
+      <aside class="side-panel">
+        <div class="panel tabs">
+          <button class="tab active" data-tab="quests">QUESTS</button>
+          <button class="tab" data-tab="inventory">ITEMS</button>
+          <button class="tab" data-tab="map">MAP</button>
+        </div>
+        <div id="sideContent"></div>
+      </aside>
+    </main>
+  </div>
+
+  <div id="endingScreen" class="screen">
+    <div class="ending-card">
+      <div class="eyebrow">END OF DAY</div>
+      <h2 id="endingTitle">The day ends.</h2>
+      <p id="endingBody"></p>
+      <div id="endingStats" class="ending-stats"></div>
+      <div class="ending-actions">
+        <button class="primary" id="nextDayBtn">START NEXT DAY</button>
+        <button class="secondary" id="titleFromEndBtn">TITLE</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="dialogue" class="overlay hidden">
+  <div class="dialogue-box">
+    <div class="dialogue-top"><span id="dialogueSpeaker">Speaker</span><span id="dialogueTime"></span></div>
+    <div class="portrait-wrap"><div id="dialoguePortrait" class="portrait"></div></div>
+    <div id="dialogueText" class="dialogue-text"></div>
+    <div id="dialogueChoices" class="dialogue-choices"></div>
+    <button id="dialogueNext" class="primary dialogue-next">CONTINUE</button>
+  </div>
+</div>
+
+<div id="menu" class="overlay hidden">
+  <div class="menu-box">
+    <div class="eyebrow">TESL D SYSTEM</div>
+    <h2>Pause</h2>
+    <button class="primary" id="resumeBtn">RESUME</button>
+    <button class="secondary" id="saveBtn">SAVE DAY</button>
+    <button class="secondary" id="restartDayBtn">RESTART DAY</button>
+    <button class="ghost" id="menuTitleBtn">RETURN TO TITLE</button>
+  </div>
+</div>
+
+<div id="toast"></div>
+<script src="data.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
